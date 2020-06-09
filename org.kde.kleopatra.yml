@@ -1,0 +1,59 @@
+id: org.kde.kleopatra
+runtime: org.kde.Platform
+runtime-version: "5.14"
+sdk: org.kde.Sdk
+command: kleopatra
+finish-args:
+  - --device=dri
+  - --filesystem=host
+  - --share=ipc
+  - --share=network
+  - --socket=ssh-auth
+  - --socket=x11
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --own-name=org.kde.StatusNotifierItem-2-1
+  - --own-name=local.kleopatra
+rename-icon: kleopatra
+modules:
+  - name: kleopatra
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://download.kde.org/stable/release-service/20.04.1/src/kleopatra-20.04.1.tar.xz
+        sha256: d6dc989f4ee441aecba4c77ed41dc85389f8c96664ccf1d19aee882ad6b7a0d4
+      
+      - type: patch
+        path: patches/kleopatra-fix-appdata.xml
+    modules:
+      - name: boost
+        buildsystem: simple
+        build-commands:
+          - ./bootstrap.sh --prefix=/app
+          - ./b2 -j $FLATPAK_BUILDER_N_JOBS
+          - ./b2 install
+        cleanup:
+          - /lib/libboost_*.a
+        sources:
+          - type: archive
+            url: https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.bz2
+            sha256: 4eb3b8d442b426dc35346235c8733b5ae35ba431690e38c6a8263dce9fcbb402
+
+      - name: gpgme
+        sources:
+          - type: archive
+            url: https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.13.1.tar.bz2
+            sha256: c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46
+      
+      - name: libkleo
+        buildsystem: cmake-ninja
+        sources:
+          - type: archive
+            url: https://download.kde.org/stable/release-service/20.04.1/src/libkleo-20.04.1.tar.xz
+            sha256: dba1ae92e248c181ab43a47c6f26f76e1e95999b7bcca8d9c9b992ee71bd3266
+      
+      - name: kmime
+        buildsystem: cmake-ninja
+        sources:
+          - type: archive
+            url: https://download.kde.org/stable/release-service/20.04.1/src/kmime-20.04.1.tar.xz
+            sha256: 59d0ec6905c7a7228f7837c2e498052e84484954e1ea42b1c720f81cb2eb6db6
