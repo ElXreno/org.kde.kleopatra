@@ -14,6 +14,10 @@ finish-args:
   - --own-name=org.kde.StatusNotifierItem-2-1
   - --own-name=local.kleopatra
 rename-icon: kleopatra
+cleanup:
+  - /include
+  - /lib/cmake
+  - /mkspecs
 modules:
   - name: kleopatra
     buildsystem: cmake-ninja
