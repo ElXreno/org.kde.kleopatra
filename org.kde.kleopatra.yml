@@ -23,8 +23,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://download.kde.org/stable/release-service/20.04.1/src/kleopatra-20.04.1.tar.xz
-        sha256: d6dc989f4ee441aecba4c77ed41dc85389f8c96664ccf1d19aee882ad6b7a0d4
+        url: https://download.kde.org/stable/release-service/20.04.2/src/kleopatra-20.04.2.tar.xz
+        sha256: b5adbae9de6e40570b5dc0d4a9a74ce10f1fac6dea25cc5287c62fbae5fe2cd8
       
       - type: patch
         path: patches/kleopatra-fix-appdata.xml
@@ -52,12 +52,12 @@ modules:
         buildsystem: cmake-ninja
         sources:
           - type: archive
-            url: https://download.kde.org/stable/release-service/20.04.1/src/libkleo-20.04.1.tar.xz
-            sha256: dba1ae92e248c181ab43a47c6f26f76e1e95999b7bcca8d9c9b992ee71bd3266
+            url: https://download.kde.org/stable/release-service/20.04.2/src/libkleo-20.04.2.tar.xz
+            sha256: 0b343fc6bae604e596ff36d47d28aac7c85a72c4461cd5c80682eae27d109eef
       
       - name: kmime
         buildsystem: cmake-ninja
         sources:
           - type: archive
-            url: https://download.kde.org/stable/release-service/20.04.1/src/kmime-20.04.1.tar.xz
-            sha256: 59d0ec6905c7a7228f7837c2e498052e84484954e1ea42b1c720f81cb2eb6db6
+            url: https://download.kde.org/stable/release-service/20.04.2/src/kmime-20.04.2.tar.xz
+            sha256: 5ac4c9fe779b2652c2afb07b5771fd3c498599dec2d5cbc66756106a05cca9c5
