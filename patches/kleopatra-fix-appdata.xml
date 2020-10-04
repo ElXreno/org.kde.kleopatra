@@ -1,13 +1,13 @@
 diff --git a/src/data/org.kde.kleopatra.appdata.xml b/src/data/org.kde.kleopatra.appdata.xml
-index 267b15c..6923966 100644
+index 8109f719..116c7659 100644
 --- a/src/data/org.kde.kleopatra.appdata.xml
 +++ b/src/data/org.kde.kleopatra.appdata.xml
-@@ -149,8 +149,6 @@
+@@ -150,8 +150,5 @@
    </provides>
    <releases>
-     <release version="3.1.11" date="2020-06-11"/>
--    <release version="3.1.11" date="2020-05-14"/>
--    <release version="3.1.11" date="2020-04-23"/>
-     <release version="3.1.8" date="2020-03-05"/>
+     <release version="3.1.11" date="2020-09-03"/>
+-    <release version="3.1.11" date="2020-08-13"/>
+-    <release version="3.1.11" date="2020-07-09"/>
+-    <release version="3.1.11" date="2020-06-11"/>
    </releases>
  </component>

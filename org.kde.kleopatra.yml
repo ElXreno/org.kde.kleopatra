@@ -1,6 +1,6 @@
 id: org.kde.kleopatra
 runtime: org.kde.Platform
-runtime-version: "5.14"
+runtime-version: "5.15"
 sdk: org.kde.Sdk
 command: kleopatra
 finish-args:
@@ -23,8 +23,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://download.kde.org/stable/release-service/20.04.2/src/kleopatra-20.04.2.tar.xz
-        sha256: b5adbae9de6e40570b5dc0d4a9a74ce10f1fac6dea25cc5287c62fbae5fe2cd8
+        url: https://download.kde.org/stable/release-service/20.08.1/src/kleopatra-20.08.1.tar.xz
+        sha256: e7bc3ce03ad5431e4289360ba6b701e38d53b60de58fd1ed358480cec48657a6
       
       - type: patch
         path: patches/kleopatra-fix-appdata.xml
@@ -32,32 +32,31 @@ modules:
       - name: boost
         buildsystem: simple
         build-commands:
-          - ./bootstrap.sh --prefix=/app
-          - ./b2 -j $FLATPAK_BUILDER_N_JOBS
-          - ./b2 install
+          - ./bootstrap.sh --prefix=/app --with-libraries=system
+          - ./b2 install variant=release link=shared runtime-link=shared cxxflags='$CXXFLAGS' linkflags='$LDFLAGS' -j $FLATPAK_BUILDER_N_JOBS
         cleanup:
           - /lib/libboost_*.a
         sources:
           - type: archive
-            url: https://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.bz2
-            sha256: 4eb3b8d442b426dc35346235c8733b5ae35ba431690e38c6a8263dce9fcbb402
+            url: https://downloads.sourceforge.net/project/boost/boost/1.74.0/boost_1_74_0.tar.bz2
+            sha256: 83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1
 
       - name: gpgme
         sources:
           - type: archive
-            url: https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.13.1.tar.bz2
-            sha256: c4e30b227682374c23cddc7fdb9324a99694d907e79242a25a4deeedb393be46
+            url: https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.14.0.tar.bz2
+            sha256: cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307
       
       - name: libkleo
         buildsystem: cmake-ninja
         sources:
           - type: archive
-            url: https://download.kde.org/stable/release-service/20.04.2/src/libkleo-20.04.2.tar.xz
-            sha256: 0b343fc6bae604e596ff36d47d28aac7c85a72c4461cd5c80682eae27d109eef
+            url: https://download.kde.org/stable/release-service/20.08.1/src/libkleo-20.08.1.tar.xz
+            sha256: 78c1dc2e4d7177aaf37cb1c706d9c21b08fac7d130ac1da3d3f2a6f083117ffb
       
       - name: kmime
         buildsystem: cmake-ninja
         sources:
           - type: archive
-            url: https://download.kde.org/stable/release-service/20.04.2/src/kmime-20.04.2.tar.xz
-            sha256: 5ac4c9fe779b2652c2afb07b5771fd3c498599dec2d5cbc66756106a05cca9c5
+            url: https://download.kde.org/stable/release-service/20.08.1/src/kmime-20.08.1.tar.xz
+            sha256: cd0beaa46040d571b505d07853be76f099289e22d99ce4884695d4d645dfbe8c
